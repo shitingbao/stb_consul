@@ -5,7 +5,7 @@ import (
 	"io"
 	"log"
 	"os"
-	"stbweb/lib/external_service/stbserver"
+	"stb_consul/external_service/stbserver"
 	"strconv"
 	"time"
 
@@ -16,7 +16,7 @@ import (
 	_ "google.golang.org/grpc/balancer/grpclb"
 )
 
-const port = "localhost:5000"
+const port = "124.70.156.31:3001"
 
 func main() {
 	startConnect()
@@ -31,13 +31,13 @@ func startConnect() {
 	defer conn.Close()
 	c := stbserver.NewStbServerClient(conn) //新建client
 
-	// getSummoner(c)
+	getSummoner(c)
 	// getAllSummoner(c)
 	// putSummoner(c)
 	// shareSummoner(c)
 	// sendfile(c)
 	// sendBigFile(c)
-	sendGroupFile(c)
+	// sendGroupFile(c)
 }
 
 //普通数据传输

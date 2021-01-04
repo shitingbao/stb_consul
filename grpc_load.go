@@ -40,15 +40,15 @@ func grpcRegister() {
 	agent := client.Agent()
 
 	reg := &api.AgentServiceRegistration{
-		ID:      fmt.Sprintf("%v-%v-%v", "shitingbao", localIP, localPort), // 服务节点的名称
-		Name:    fmt.Sprintf("grpc.health.v1.%v", "service_shitingbao"),    // 服务名称
-		Tags:    []string{"shitingbao_test_service"},                       // tag，可以为空
-		Port:    localPort,                                                 // 服务端口
-		Address: localIP,                                                   // 服务 IP
+		ID:      fmt.Sprintf("%v-%v-%v", "StbServe", localIP, localPort), // 服务节点的名称
+		Name:    fmt.Sprintf("grpc.health.v1.%v", "StbServe"),            // 服务名称
+		Tags:    []string{"StbServe"},                                    // tag，可以为空
+		Port:    localPort,                                               // 服务端口
+		Address: localIP,                                                 // 服务 IP
 		Check: &api.AgentServiceCheck{ // 健康检查
 			Interval: "5s", // 健康检查间隔
 			// grpc 支持，执行健康检查的地址，service 会传到 Health.Check 函数中
-			GRPC:                           fmt.Sprintf("%v:%v/%v", localIP, localPort, "service_shitingbao"),
+			GRPC:                           fmt.Sprintf("%v:%v/%v", localIP, localPort, "StbServe"),
 			DeregisterCriticalServiceAfter: "5s", // 注销时间，相当于过期时间
 		},
 	}
