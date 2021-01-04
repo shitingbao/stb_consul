@@ -14,13 +14,13 @@ import (
 
 //grpc开启
 func externalServer() {
-	lis, err := net.Listen("tcp", ":5000")
+	lis, err := net.Listen("tcp", ":3001")
 	if err != nil {
 		logrus.Info("外置服务开启失败:", err)
 		panic(err)
 	}
 	logrus.WithFields(logrus.Fields{
-		"tcp": ":5000",
+		"tcp": ":3001",
 	}).Info("external server")
 	s := grpc.NewServer()
 	stbserver.RegisterStbServerServer(s, &stb_server.StbServe{})
